@@ -1,0 +1,19 @@
+VERSION = 1,
+
+option TeleportOnJoin.Enabled
+{
+    type = boolean,
+    default = false,
+
+    page = TeleportOnJoin,
+    translation = TeleportOnJoin_Enabled,
+}
+
+option TeleportOnJoin.Coordinates
+{
+    type = string,
+    default = "0,0,0",
+
+    page = TeleportOnJoin,
+    translation = TeleportOnJoin_Coordinates,
+}

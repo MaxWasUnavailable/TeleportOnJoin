@@ -1,0 +1,9 @@
+Sandbox_EN = {
+	Sandbox_TeleportOnJoin = "Teleport On Join",
+
+	Sandbox_TeleportOnJoin_Coordinates = "Teleport Coordinates",
+	Sandbox_TeleportOnJoin_Coordinates_tooltip = "Set the coordinates where players will be teleported when they join the game. Use the format 'x,y,z' (e.g., '100,200,0').",
+
+	Sandbox_TeleportOnJoin_Enabled = "Enable Teleport On Join",
+    Sandbox_TeleportOnJoin_Enabled_tooltip = "If enabled, players will be teleported to the specified coordinates when they join the game.",
+}
