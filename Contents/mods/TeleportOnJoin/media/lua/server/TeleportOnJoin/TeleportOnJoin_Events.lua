@@ -48,16 +48,4 @@ end
 
 -- Init
 
---- Initialize the mod and add event hooks.
----@return void
-TeleportOnJoin.init = function()
-    Events.onCreatePlayer(onPlayerJoin)
-
-    Utils.log(TeleportOnJoin.modVersion .. " initialized.")
-
-    Events.OnConnected.Remove(TeleportOnJoin.init)
-end
-
--- Init hook
-
-Events.OnConnected.Add(TeleportOnJoin.init)
+Events.onCreatePlayer(onPlayerJoin)
