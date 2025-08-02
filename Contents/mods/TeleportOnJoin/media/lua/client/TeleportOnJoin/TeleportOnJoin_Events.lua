@@ -33,7 +33,7 @@ end
 --- Teleport a player to the specified coordinates when they join the game.
 ---@return void
 local function handlePlayerTeleport()
-    Events.OnTick.Remove(handlePlayerTeleport)
+    Events.OnPlayerMove.Remove(handlePlayerTeleport)
     if not Sandbox.getEnabled() then
         return
     end
@@ -49,13 +49,14 @@ local function handlePlayerTeleport()
     cachedPlayer = nil
 end
 
---- Schedule the player teleport event to be handled on the next tick.
+--- Schedule the player teleport event to be handled when they next move. This is necessary to ensure the teleport
+--- actually happens. Other methods seemed to be unreliable.
 ---@param _ number Unused parameter. Kept for compatibility with the event signature.
 ---@param player IsoPlayer Player to teleport
 ---@return void
 local function schedulePlayerTeleport(_, player)
     cachedPlayer = player
-    Events.OnTick.Add(handlePlayerTeleport)
+    Events.OnPlayerMove.Add(handlePlayerTeleport)
 end
 
 -- Init
