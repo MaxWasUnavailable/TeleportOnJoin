@@ -14,6 +14,9 @@ local ModDataUtils = require "TeleportOnJoin/TeleportOnJoin_ModDataUtils"
 
 -- Variables
 
+---@type IsoPlayer
+local cachedPlayer = nil
+
 -- Helper functions
 
 --- Check if a player should be teleported.
@@ -28,26 +31,29 @@ end
 -- Events
 
 --- Teleport a player to the specified coordinates when they join the game.
----@param _ number Unused parameter, kept for event signature compatibility (Player number)
----@param player IsoPlayer
 ---@return void
-local function handlePlayerTeleport(_, player)
+local function handlePlayerTeleport()
     Events.OnTick.Remove(handlePlayerTeleport)
     if not Sandbox.getEnabled() then
         return
     end
 
-    if shouldTeleport(player) then
+    if shouldTeleport(cachedPlayer) then
         local coords = Sandbox.getCoordinates()
-        Utils.teleportPlayer(player, coords)
+        Utils.teleportPlayer(cachedPlayer, coords)
 
         local modData = ModDataUtils.getModData()
-        modData:addEntry(player:getDisplayName(), coords)
+        modData:addEntry(cachedPlayer:getDisplayName(), coords)
         ModDataUtils.setModData(modData)
     end
 end
 
-local function schedulePlayerTeleport()
+--- Schedule the player teleport event to be handled on the next tick.
+---@param _ number Unused parameter. Kept for compatibility with the event signature.
+---@param player IsoPlayer Player to teleport
+---@return void
+local function schedulePlayerTeleport(_, player)
+    cachedPlayer = player
     Events.OnTick.Add(handlePlayerTeleport)
 end
 
