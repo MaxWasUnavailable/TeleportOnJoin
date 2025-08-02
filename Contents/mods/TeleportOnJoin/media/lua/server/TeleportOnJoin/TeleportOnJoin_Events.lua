@@ -47,5 +47,5 @@ end
 
 -- Init
 
-Events.onCreatePlayer.Add(onPlayerJoin)
+Events.OnCreatePlayer.Add(onPlayerJoin)
 Utils.log("Hooked into onCreatePlayer event.")
