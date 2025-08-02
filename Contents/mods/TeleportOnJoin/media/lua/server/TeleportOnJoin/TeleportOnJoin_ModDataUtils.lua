@@ -60,7 +60,7 @@ end
 --- Get the mod data for TeleportOnJoin as a TeleportOnJoinModData instance.
 ---@return TeleportOnJoinModData
 ModDataUtils.getModData = function()
-    local raw = ModData:getOrCreate(TeleportOnJoin.modName)
+    local raw = ModData.getOrCreate(TeleportOnJoin.modName)
     if raw.entries == nil then
         return TeleportOnJoinModData:new()
     end
@@ -78,7 +78,7 @@ ModDataUtils.setModData = function(data)
         return
     end
     modData:merge(data)
-    ModData:add(TeleportOnJoin.modName, modData)
+    ModData.add(TeleportOnJoin.modName, modData)
     Utils.log("Mod data set for " .. TeleportOnJoin.modName .. ".")
 end
 

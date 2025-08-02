@@ -24,6 +24,7 @@ local shouldTeleport = function(player)
     if not Sandbox.getEnabled() then
         return false
     end
+    Utils.log("Checking if player should be teleported: " .. player:getDisplayName())
     local modData = ModDataUtils.getModData()
     local coords = Sandbox.getCoordinates()
     return not modData:hasEntry(player:getDisplayName(), coords)

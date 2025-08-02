@@ -14,7 +14,7 @@ local TeleportOnJoin = require "TeleportOnJoin/TeleportOnJoin"
 ---@param mod TeleportOnJoin
 ---@param message string
 ---@return void
-Utils.log_internal = function(mod, message)
+local log_internal = function(mod, message)
     print(mod.modName .. ": " .. message)
 end
 
@@ -22,7 +22,7 @@ end
 ---@param message string
 ---@return void
 Utils.log = function(message)
-    Utils.log_internal(TeleportOnJoin, message)
+    log_internal(TeleportOnJoin, message)
 end
 
 --- Teleport a player to specified coordinates.
