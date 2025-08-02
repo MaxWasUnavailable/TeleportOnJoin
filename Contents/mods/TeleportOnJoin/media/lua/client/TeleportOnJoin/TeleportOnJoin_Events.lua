@@ -12,11 +12,6 @@ local Sandbox = require "TeleportOnJoin/TeleportOnJoin_Sandbox"
 ---@type TeleportOnJoinModDataUtils
 local ModDataUtils = require "TeleportOnJoin/TeleportOnJoin_ModDataUtils"
 
--- Variables
-
----@type IsoPlayer
-local cachedPlayer = nil
-
 -- Helper functions
 
 --- Check if a player should be teleported.
@@ -33,30 +28,31 @@ end
 --- Teleport a player to the specified coordinates when they join the game.
 ---@return void
 local function handlePlayerTeleport()
-    Events.OnPlayerMove.Remove(handlePlayerTeleport)
-    if not Sandbox.getEnabled() then
-        return
+    local player = getPlayer()
+    local coords = Sandbox.getCoordinates()
+
+    if shouldTeleport(player) then
+        Utils.teleportPlayer(player, coords)
     end
 
-    if shouldTeleport(cachedPlayer) then
-        local coords = Sandbox.getCoordinates()
-        Utils.teleportPlayer(cachedPlayer, coords)
-
+    -- if current player position is within 10m of the target position, we unsubscribe
+    if math.abs(player:getX() - coords.X) < 10 and math.abs(player:getY() - coords.Y) < 10 and math.abs(player:getZ() - coords.Z) < 10 then
         local modData = ModDataUtils.getModData()
-        modData:addEntry(cachedPlayer:getDisplayName(), coords)
+        modData:addEntry(player:getDisplayName(), coords)
         ModDataUtils.setModData(modData)
+
+        Events.OnTick.Remove(handlePlayerTeleport)
     end
-    cachedPlayer = nil
 end
 
 --- Schedule the player teleport event to be handled when they next move. This is necessary to ensure the teleport
 --- actually happens. Other methods seemed to be unreliable.
----@param _ number Unused parameter. Kept for compatibility with the event signature.
----@param player IsoPlayer Player to teleport
 ---@return void
-local function schedulePlayerTeleport(_, player)
-    cachedPlayer = player
-    Events.OnPlayerMove.Add(handlePlayerTeleport)
+local function schedulePlayerTeleport(_, _)
+    if not Sandbox.getEnabled() then
+        return
+    end
+    Events.OnTick.Add(handlePlayerTeleport)
 end
 
 -- Init
