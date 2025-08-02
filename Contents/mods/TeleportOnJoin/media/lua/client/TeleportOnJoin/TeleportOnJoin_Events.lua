@@ -46,6 +46,7 @@ local function handlePlayerTeleport()
         modData:addEntry(cachedPlayer:getDisplayName(), coords)
         ModDataUtils.setModData(modData)
     end
+    cachedPlayer = nil
 end
 
 --- Schedule the player teleport event to be handled on the next tick.
