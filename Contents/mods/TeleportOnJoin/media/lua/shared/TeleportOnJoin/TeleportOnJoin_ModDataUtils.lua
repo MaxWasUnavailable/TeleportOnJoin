@@ -38,7 +38,6 @@ ModDataUtils.setModData = function(data)
     end
     modData:merge(data)
     ModData.add(TeleportOnJoin.modName, modData)
-    Utils.log("Mod data set for " .. TeleportOnJoin.modName .. ".")
 end
 
 return ModDataUtils
