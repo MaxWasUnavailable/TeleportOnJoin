@@ -21,6 +21,9 @@ local ModDataUtils = require "TeleportOnJoin/TeleportOnJoin_ModDataUtils"
 ---@param player IsoPlayer
 ---@return boolean
 local shouldTeleport = function(player)
+    if not Sandbox.getEnabled() then
+        return false
+    end
     local modData = ModDataUtils.getModData()
     local coords = Sandbox.getCoordinates()
     return not modData:hasEntry(player:getDisplayName(), coords)
