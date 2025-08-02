@@ -20,6 +20,9 @@ end
 ---@param coords table
 ---@return void
 function TeleportOnJoinModData:addEntry(playerName, coords)
+    if self:hasEntry(playerName, coords) then
+        return
+    end
     table.insert(self.entries, { player = playerName, coords = coords })
 end
 

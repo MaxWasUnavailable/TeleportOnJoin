@@ -30,17 +30,22 @@ end
 local function handlePlayerTeleport()
     local player = getPlayer()
     local coords = Sandbox.getCoordinates()
+    local didTeleport = false
 
     if shouldTeleport(player) then
         Utils.teleportPlayer(player, coords)
+        didTeleport = true
     end
 
-    -- if current player position is within 10m of the target position, we unsubscribe
+    -- if current player position is within 10m of the target position, we are done
     if math.abs(player:getX() - coords.X) < 10 and math.abs(player:getY() - coords.Y) < 10 and math.abs(player:getZ() - coords.Z) < 10 then
-        HaloTextHelper.addText(player, "You find yourself somewhere new..", HaloTextHelper.getColorWhite())
-        local modData = ModDataUtils.getModData()
-        modData:addEntry(player:getDisplayName(), coords)
-        ModDataUtils.setModData(modData)
+        if didTeleport then
+            HaloTextHelper.addText(player, "You find yourself somewhere new..", HaloTextHelper.getColorWhite())
+
+            local modData = ModDataUtils.getModData()
+            modData:addEntry(player:getDisplayName(), coords)
+            ModDataUtils.setModData(modData)
+        end
 
         Events.OnTick.Remove(handlePlayerTeleport)
     end
