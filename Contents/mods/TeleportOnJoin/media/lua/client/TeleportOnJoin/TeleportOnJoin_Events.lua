@@ -37,6 +37,7 @@ local function handlePlayerTeleport()
 
     -- if current player position is within 10m of the target position, we unsubscribe
     if math.abs(player:getX() - coords.X) < 10 and math.abs(player:getY() - coords.Y) < 10 and math.abs(player:getZ() - coords.Z) < 10 then
+        HaloTextHelper.addText(player, "You find yourself somewhere new..", HaloTextHelper.getColorWhite())
         local modData = ModDataUtils.getModData()
         modData:addEntry(player:getDisplayName(), coords)
         ModDataUtils.setModData(modData)
@@ -45,8 +46,7 @@ local function handlePlayerTeleport()
     end
 end
 
---- Schedule the player teleport event to be handled when they next move. This is necessary to ensure the teleport
---- actually happens. Other methods seemed to be unreliable.
+--- Schedule the player teleport event to be handled on the next tick.
 ---@return void
 local function schedulePlayerTeleport(_, _)
     if not Sandbox.getEnabled() then
