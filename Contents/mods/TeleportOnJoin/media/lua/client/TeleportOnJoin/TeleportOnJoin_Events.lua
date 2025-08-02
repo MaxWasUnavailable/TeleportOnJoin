@@ -4,13 +4,13 @@
 ---
 
 ---@type TeleportOnJoinUtils
-local Utils = require "shared/TeleportOnJoin/TeleportOnJoin_Utils"
+local Utils = require "TeleportOnJoin/TeleportOnJoin_Utils"
 
 ---@type TeleportOnJoinSandbox
-local Sandbox = require "shared/TeleportOnJoin/TeleportOnJoin_Sandbox"
+local Sandbox = require "TeleportOnJoin/TeleportOnJoin_Sandbox"
 
 ---@type TeleportOnJoinModDataUtils
-local ModDataUtils = require "shared/TeleportOnJoin/TeleportOnJoin_ModDataUtils"
+local ModDataUtils = require "TeleportOnJoin/TeleportOnJoin_ModDataUtils"
 
 -- Variables
 

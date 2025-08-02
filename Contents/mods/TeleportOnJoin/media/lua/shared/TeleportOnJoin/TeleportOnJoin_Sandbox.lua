@@ -8,7 +8,7 @@
 local Sandbox = {}
 
 ---@type TeleportOnJoinUtils
-local Utils = require "shared/TeleportOnJoin/TeleportOnJoin_Utils"
+local Utils = require "TeleportOnJoin/TeleportOnJoin_Utils"
 
 --- Get the Enabled value.
 ---@return boolean
