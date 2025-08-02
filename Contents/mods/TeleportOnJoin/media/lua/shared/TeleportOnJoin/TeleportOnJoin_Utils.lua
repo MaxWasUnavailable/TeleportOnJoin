@@ -8,7 +8,7 @@
 local Utils = {}
 
 ---@type TeleportOnJoin
-local TeleportOnJoin = require "shared.TeleportOnJoin.TeleportOnJoin"
+local TeleportOnJoin = require "shared/TeleportOnJoin/TeleportOnJoin"
 
 --- Log a message.
 ---@param mod TeleportOnJoin
