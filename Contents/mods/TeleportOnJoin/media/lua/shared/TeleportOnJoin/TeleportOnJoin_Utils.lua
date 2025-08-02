@@ -41,7 +41,12 @@ Utils.teleportPlayer = function(player, coords)
         return
     end
 
-    player:setPosition(x, y, z)
+    player:setX(x)
+    player:setY(y)
+    player:setZ(z)
+    player:setLx(x)
+    player:setLy(y)
+    player:setLz(z)
     Utils.log("Teleported " .. player:getUsername() .. " to coordinates: (" .. x .. ", " .. y .. ", " .. z .. ")")
 end
 
