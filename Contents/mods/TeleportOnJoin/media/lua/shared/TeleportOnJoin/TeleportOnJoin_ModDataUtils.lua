@@ -8,13 +8,13 @@
 local ModDataUtils = {}
 
 ---@type TeleportOnJoin
-local TeleportOnJoin = require "TeleportOnJoin/TeleportOnJoin"
+local TeleportOnJoin = require "shared.TeleportOnJoin.TeleportOnJoin"
 
 ---@type TeleportOnJoinUtils
-local Utils = require "TeleportOnJoin/TeleportOnJoin_Utils"
+local Utils = require "shared.TeleportOnJoin.TeleportOnJoin_Utils"
 
 ---@type TeleportOnJoinModData
-local TeleportOnJoinModData = require "TeleportOnJoin/models/TeleportOnJoinModData"
+local TeleportOnJoinModData = require "shared.TeleportOnJoin.models.TeleportOnJoinModData"
 
 --- Get the mod data for TeleportOnJoin as a TeleportOnJoinModData instance.
 ---@return TeleportOnJoinModData
