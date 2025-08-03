@@ -6,4 +6,7 @@ Sandbox_EN = {
 
 	Sandbox_TeleportOnJoin_Enabled = "Enable Teleport On Join",
     Sandbox_TeleportOnJoin_Enabled_tooltip = "If enabled, players will be teleported to the specified coordinates when they join the game.",
+
+    Sandbox_TeleportOnJoin_Message = "Teleport Message",
+    Sandbox_TeleportOnJoin_Message_tooltip = "Set the message that players will see when they are teleported to the specified coordinates.",
 }

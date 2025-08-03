@@ -36,4 +36,14 @@ Sandbox.getCoordinates = function()
     return { X = x, Y = y, Z = z }
 end
 
+--- Get the teleportation message.
+---@return string
+Sandbox.getTeleportMessage = function()
+    local message = SandboxVars.TeleportOnJoin.Message
+    if message == nil or message == "" then
+        return nil
+    end
+    return message
+end
+
 return Sandbox

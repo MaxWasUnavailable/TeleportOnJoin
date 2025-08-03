@@ -17,3 +17,12 @@ option TeleportOnJoin.Coordinates
     page = TeleportOnJoin,
     translation = TeleportOnJoin_Coordinates,
 }
+
+option TeleportOnJoin.Message
+{
+    type = string,
+    default = "You find yourself somewhere new...",
+
+    page = TeleportOnJoin,
+    translation = TeleportOnJoin_Message,
+}

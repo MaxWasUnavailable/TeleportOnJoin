@@ -40,7 +40,10 @@ local function handlePlayerTeleport()
     -- if current player position is within 10m of the target position, we are done
     if math.abs(player:getX() - coords.X) < 10 and math.abs(player:getY() - coords.Y) < 10 and math.abs(player:getZ() - coords.Z) < 10 then
         if didTeleport then
-            HaloTextHelper.addText(player, "You find yourself somewhere new..", HaloTextHelper.getColorWhite())
+            local message = Sandbox.getTeleportMessage()
+            if message then
+                HaloTextHelper.addText(player, message, HaloTextHelper.getColorWhite())
+            end
 
             local modData = ModDataUtils.getModData()
             modData:addEntry(player:getDisplayName(), coords)
